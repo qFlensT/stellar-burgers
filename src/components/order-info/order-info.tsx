@@ -1,25 +1,37 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
-import { TIngredient } from '@utils-types';
+import { TIngredient, TOrder } from '@utils-types';
+import { useParams } from 'react-router-dom';
+import { useOrders } from '../../hooks/use-orders';
+import { useIngredients } from '../../hooks/use-ingredients';
+import { getOrderByNumberApi } from '@api';
 
 export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
-  const orderData = {
-    createdAt: '',
-    ingredients: [],
-    _id: '',
-    status: '',
-    name: '',
-    updatedAt: 'string',
-    number: 0
-  };
+  const { number } = useParams();
 
-  const ingredients: TIngredient[] = [];
+  const [orderState, setOrderState] = useState<{
+    order: TOrder | null;
+    isLoading: boolean;
+  }>({ isLoading: true, order: null });
+
+  // Можно было бы сначала проверять локальное хранилище, если не находим - запрашиваем сервер
+  useEffect(() => {
+    getOrderByNumberApi(+number!).then((res) =>
+      setOrderState({ isLoading: false, order: res.orders[0] })
+    );
+  }, []);
+
+  const {
+    state: { ingredients, isLoading: ingredientsIsLoading }
+  } = useIngredients();
+
+  const orderData = orderState.order;
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
-    if (!orderData || !ingredients.length) return null;
+    if (!orderData || !ingredients || !ingredients.length) return null;
 
     const date = new Date(orderData.createdAt);
 
@@ -59,8 +71,12 @@ export const OrderInfo: FC = () => {
     };
   }, [orderData, ingredients]);
 
-  if (!orderInfo) {
+  if (orderState.isLoading || ingredientsIsLoading) {
     return <Preloader />;
+  }
+
+  if (!orderInfo) {
+    return <>Не удалось найти заказ</>;
   }
 
   return <OrderInfoUI orderInfo={orderInfo} />;

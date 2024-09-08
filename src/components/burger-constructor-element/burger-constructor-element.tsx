@@ -1,14 +1,20 @@
 import { FC, memo } from 'react';
 import { BurgerConstructorElementUI } from '@ui';
 import { BurgerConstructorElementProps } from './type';
+import { useIngredientsConstructor } from '../../hooks/use-ingredients-constructor';
 
 export const BurgerConstructorElement: FC<BurgerConstructorElementProps> = memo(
   ({ ingredient, index, totalItems }) => {
-    const handleMoveDown = () => {};
+    const {
+      actions: { moveIngredientDown, moveIngredientUp, removeIngredient }
+    } = useIngredientsConstructor();
 
-    const handleMoveUp = () => {};
+    const handleMoveDown = () => moveIngredientDown(ingredient.id);
 
-    const handleClose = () => {};
+    const handleMoveUp = () => moveIngredientUp(ingredient.id);
+
+    // 👍 naming
+    const handleClose = () => removeIngredient(ingredient.id);
 
     return (
       <BurgerConstructorElementUI

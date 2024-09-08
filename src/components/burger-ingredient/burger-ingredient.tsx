@@ -3,12 +3,17 @@ import { useLocation } from 'react-router-dom';
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
+import { useIngredientsConstructor } from '../../hooks/use-ingredients-constructor';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
     const location = useLocation();
 
-    const handleAdd = () => {};
+    const {
+      actions: { add }
+    } = useIngredientsConstructor();
+
+    const handleAdd = () => add(ingredient);
 
     return (
       <BurgerIngredientUI

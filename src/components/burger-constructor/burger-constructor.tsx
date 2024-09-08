@@ -1,24 +1,35 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
+import { useIngredientsConstructor } from '../../hooks/use-ingredients-constructor';
+import { useCreateOrder } from '../../hooks/use-create-order';
 
 export const BurgerConstructor: FC = () => {
   /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
+  const { bun, ingredients } = useIngredientsConstructor();
+  const {
+    state: { isLoading, createdOrder },
+    actions: { create, reset }
+  } = useCreateOrder();
+
   const constructorItems = {
-    bun: {
-      price: 0
-    },
-    ingredients: []
+    bun,
+    ingredients
   };
 
-  const orderRequest = false;
+  // Отвечает за отображение модального окна с оформлением заказа
+  const orderRequest = isLoading;
 
-  const orderModalData = null;
+  const orderModalData = createdOrder;
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
+
+    create([bun!._id, ...ingredients!.map((ing) => ing._id)]);
   };
-  const closeOrderModal = () => {};
+  const closeOrderModal = () => {
+    reset();
+  };
 
   const price = useMemo(
     () =>
@@ -29,8 +40,6 @@ export const BurgerConstructor: FC = () => {
       ),
     [constructorItems]
   );
-
-  return null;
 
   return (
     <BurgerConstructorUI
