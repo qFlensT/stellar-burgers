@@ -3,7 +3,6 @@ import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient, TOrder } from '@utils-types';
 import { useParams } from 'react-router-dom';
-import { useOrders } from '../../hooks/use-orders';
 import { useIngredients } from '../../hooks/use-ingredients';
 import { getOrderByNumberApi } from '@api';
 

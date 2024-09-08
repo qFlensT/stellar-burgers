@@ -1,8 +1,10 @@
 import {
   useCreateOrderStore,
   useIngredientsConstructorStore,
-  useOrdersStore
+  useOrdersStore,
+  useUserStore
 } from '@store';
+import { useNavigate } from 'react-router-dom';
 
 export const useCreateOrder = () => {
   const {
@@ -12,17 +14,24 @@ export const useCreateOrder = () => {
     isLoading,
     reset
   } = useCreateOrderStore();
-
   const { refresh } = useOrdersStore();
   const { reset: resetIngredients } = useIngredientsConstructorStore();
+  const { user } = useUserStore();
 
-  const create = (ids: string[]) =>
+  const navigate = useNavigate();
+
+  const create = (ids: string[]) => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
     createOrder(ids)
       .then(() => {
         resetIngredients();
         refresh();
       })
       .catch(console.error);
+  };
 
   return {
     state: { createdOrder, isLoading, error },
