@@ -1,4 +1,9 @@
-import { setCookie, getCookie } from './cookie';
+import {
+  getAccessToken,
+  getRefreshToken,
+  setAccessToken,
+  setRefreshToken
+} from './tokens';
 import { TIngredient, TOrder, TOrdersData, TUser } from './types';
 
 const URL = process.env.BURGER_API_URL;
@@ -22,7 +27,7 @@ export const refreshToken = (): Promise<TRefreshResponse> =>
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-      token: localStorage.getItem('refreshToken')
+      token: getRefreshToken()
     })
   })
     .then((res) => checkResponse<TRefreshResponse>(res))
@@ -30,8 +35,8 @@ export const refreshToken = (): Promise<TRefreshResponse> =>
       if (!refreshData.success) {
         return Promise.reject(refreshData);
       }
-      localStorage.setItem('refreshToken', refreshData.refreshToken);
-      setCookie('accessToken', refreshData.accessToken);
+      setRefreshToken(refreshData.refreshToken);
+      setAccessToken(refreshData.accessToken);
       return refreshData;
     });
 
@@ -92,7 +97,7 @@ export const getOrdersApi = () =>
     method: 'GET',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
-      authorization: getCookie('accessToken')
+      authorization: getAccessToken()
     } as HeadersInit
   }).then((data) => {
     if (data?.success) return data.orders;
@@ -109,7 +114,7 @@ export const orderBurgerApi = (data: string[]) =>
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
-      authorization: getCookie('accessToken')
+      authorization: getAccessToken()
     } as HeadersInit,
     body: JSON.stringify({
       ingredients: data
@@ -123,6 +128,7 @@ type TOrderResponse = TServerResponse<{
   orders: TOrder[];
 }>;
 
+// без авторизации?
 export const getOrderByNumberApi = (number: number) =>
   fetch(`${URL}/orders/${number}`, {
     method: 'GET',
@@ -209,7 +215,7 @@ type TUserResponse = TServerResponse<{ user: TUser }>;
 export const getUserApi = () =>
   fetchWithRefresh<TUserResponse>(`${URL}/auth/user`, {
     headers: {
-      authorization: getCookie('accessToken')
+      authorization: getAccessToken()
     } as HeadersInit
   });
 
@@ -218,7 +224,7 @@ export const updateUserApi = (user: Partial<TRegisterData>) =>
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
-      authorization: getCookie('accessToken')
+      authorization: getAccessToken()
     } as HeadersInit,
     body: JSON.stringify(user)
   });
@@ -230,6 +236,6 @@ export const logoutApi = () =>
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
-      token: localStorage.getItem('refreshToken')
+      token: getRefreshToken()
     })
   }).then((res) => checkResponse<TServerResponse<{}>>(res));
