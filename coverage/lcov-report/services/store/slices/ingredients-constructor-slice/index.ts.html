@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for utils/tokens.ts</title>
+    <title>Code coverage report for services/store/slices/ingredients-constructor-slice/index.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">utils</a> tokens.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">services/store/slices/ingredients-constructor-slice</a> index.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.15% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.15% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,40 +86,40 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from './constants';
-import { deleteCookie, getCookie, setCookie } from './cookie';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
+  addItem,
+  changeItemPosition,
+  ingredientsConstructorSlice,
+  reducer,
+  removeItem,
+  resetState,
+  state
+} from './ingredients-constructor-slice';
 &nbsp;
-export const setAccessToken = <span class="fstat-no" title="function not covered" >(token: string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  setCookie(ACCESS_TOKEN_KEY, token);</span>
-<span class="cstat-no" title="statement not covered" >};</span>
-&nbsp;
-export const setRefreshToken = <span class="fstat-no" title="function not covered" >(token: string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  localStorage.setItem(REFRESH_TOKEN_KEY, token);</span>
-<span class="cstat-no" title="statement not covered" >};</span>
-&nbsp;
-export const deleteTokens = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  deleteCookie(ACCESS_TOKEN_KEY);</span>
-<span class="cstat-no" title="statement not covered" >  localStorage.removeItem(REFRESH_TOKEN_KEY);</span>
-<span class="cstat-no" title="statement not covered" >};</span>
-&nbsp;
-export const getAccessToken = <span class="fstat-no" title="function not covered" >() =&gt; getCookie(ACCESS_TOKEN_KEY) || null;</span>
-&nbsp;
-export const getRefreshToken = <span class="fstat-no" title="function not covered" >() =&gt; localStorage.getItem(REFRESH_TOKEN_KEY);</span>
+export {
+  addItem,
+  changeItemPosition,
+  ingredientsConstructorSlice,
+  reducer,
+  removeItem,
+  resetState,
+  state
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -129,14 +129,14 @@ export const getRefreshToken = <span class="fstat-no" title="function not covere
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2024-10-11T09:15:11.510Z
             </div>
-        <script src="../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     

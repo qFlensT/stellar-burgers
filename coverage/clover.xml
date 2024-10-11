@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1728637219470" clover="3.2.0">
-  <project timestamp="1728637219470" name="All files">
-    <metrics statements="643" coveredstatements="444" conditionals="43" coveredconditionals="37" methods="42" coveredmethods="11" elements="728" coveredelements="492" complexity="0" loc="643" ncloc="643" packages="7" files="10" classes="10"/>
+<coverage generated="1728638111529" clover="3.2.0">
+  <project timestamp="1728638111529" name="All files">
+    <metrics statements="693" coveredstatements="494" conditionals="43" coveredconditionals="37" methods="42" coveredmethods="11" elements="778" coveredelements="542" complexity="0" loc="693" ncloc="693" packages="8" files="17" classes="17"/>
+    <package name="services.store">
+      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="root-reducer.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/root-reducer.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="services.store.slices.create-order-slice">
-      <metrics statements="57" coveredstatements="57" conditionals="8" coveredconditionals="6" methods="3" coveredmethods="2"/>
+      <metrics statements="60" coveredstatements="60" conditionals="8" coveredconditionals="6" methods="3" coveredmethods="2"/>
       <file name="create-order-slice.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/create-order-slice/create-order-slice.ts">
         <metrics statements="57" coveredstatements="57" conditionals="8" coveredconditionals="6" methods="3" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -64,9 +86,15 @@
         <line num="56" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
       </file>
+      <file name="index.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/create-order-slice/index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
     </package>
     <package name="services.store.slices.feeds-slice">
-      <metrics statements="49" coveredstatements="49" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <metrics statements="52" coveredstatements="52" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
       <file name="feeds-slice.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/feeds-slice/feeds-slice.ts">
         <metrics statements="49" coveredstatements="49" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -119,9 +147,37 @@
         <line num="48" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
       </file>
+      <file name="index.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/feeds-slice/index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
     </package>
     <package name="services.store.slices.ingredients-constructor-slice">
-      <metrics statements="86" coveredstatements="84" conditionals="13" coveredconditionals="9" methods="6" coveredmethods="4"/>
+      <metrics statements="105" coveredstatements="103" conditionals="13" coveredconditionals="9" methods="6" coveredmethods="4"/>
+      <file name="index.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/ingredients-constructor-slice/index.ts">
+        <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
       <file name="ingredients-constructor-slice.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/ingredients-constructor-slice/ingredients-constructor-slice.ts">
         <metrics statements="86" coveredstatements="84" conditionals="13" coveredconditionals="9" methods="6" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
@@ -213,7 +269,13 @@
       </file>
     </package>
     <package name="services.store.slices.ingredients-slice">
-      <metrics statements="48" coveredstatements="48" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <metrics statements="51" coveredstatements="51" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/ingredients-slice/index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
       <file name="ingredients-slice.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/ingredients-slice/ingredients-slice.ts">
         <metrics statements="48" coveredstatements="48" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -267,7 +329,13 @@
       </file>
     </package>
     <package name="services.store.slices.orders-slice">
-      <metrics statements="48" coveredstatements="48" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <metrics statements="51" coveredstatements="51" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/orders-slice/index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
       <file name="orders-slice.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/orders-slice/orders-slice.ts">
         <metrics statements="48" coveredstatements="48" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -321,7 +389,13 @@
       </file>
     </package>
     <package name="services.store.slices.user-slice">
-      <metrics statements="46" coveredstatements="46" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <metrics statements="49" coveredstatements="49" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/user-slice/index.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
       <file name="user-slice.ts" path="/Users/kon/Coding/Frontend/Learning/Practicum/stellar-burgers/src/services/store/slices/user-slice/user-slice.ts">
         <metrics statements="46" coveredstatements="46" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
