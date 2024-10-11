@@ -1,7 +1,7 @@
 import { getOrdersApi } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
-import { SliceState } from '../types';
+import { SliceState } from '../../types';
 
 type OrdersState = SliceState<'orders', TOrder[]>;
 
@@ -12,17 +12,15 @@ const initialState: OrdersState = {
   isInitialized: false
 };
 
-export const fetchOrders = createAsyncThunk('orders/getAll', getOrdersApi);
+export const fetchOrders = createAsyncThunk('orders/getAll', () =>
+  getOrdersApi()
+);
 
 const ordersSlice = createSlice({
   name: 'orders',
   initialState: initialState,
   selectors: {
-    state: (state) => state,
-    isLoading: (state) => state.isLoading,
-    orders: (state) => state.orders,
-    isInitialized: (state) => state.isInitialized,
-    error: (state) => state.error
+    state: (state) => state
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -32,8 +30,8 @@ const ordersSlice = createSlice({
       state.isLoading = true;
       state.orders = null;
     });
-    builder.addCase(fetchOrders.rejected, (state, { payload }) => {
-      state.error = payload;
+    builder.addCase(fetchOrders.rejected, (state, { error }) => {
+      state.error = error;
       state.isLoading = false;
       state.orders = null;
     });
@@ -45,7 +43,6 @@ const ordersSlice = createSlice({
   }
 });
 
-export const { state, error, orders, isInitialized, isLoading } =
-  ordersSlice.selectors;
+export const { state } = ordersSlice.selectors;
 
 export const { reducer } = ordersSlice;
