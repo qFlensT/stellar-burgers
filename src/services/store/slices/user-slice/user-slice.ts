@@ -5,7 +5,7 @@ import { getUserApi } from '@api';
 
 type UserState = SliceState<'user', TUser>;
 
-const initialState: UserState = {
+export const initialState: UserState = {
   isLoading: true,
   error: null,
   user: null,

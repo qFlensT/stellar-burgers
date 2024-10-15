@@ -1,3 +1,3 @@
-import { state, reducer, fetchFeeds } from './feeds-slice';
+import { state, reducer, fetchFeeds, initialState } from './feeds-slice';
 
-export { state, reducer, fetchFeeds };
+export { state, reducer, fetchFeeds, initialState };

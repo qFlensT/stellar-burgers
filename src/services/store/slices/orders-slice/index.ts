@@ -1,3 +1,3 @@
-import { fetchOrders, reducer, state } from './orders-slice';
+import { fetchOrders, reducer, state, initialState } from './orders-slice';
 
-export { fetchOrders, reducer, state };
+export { fetchOrders, reducer, state, initialState };

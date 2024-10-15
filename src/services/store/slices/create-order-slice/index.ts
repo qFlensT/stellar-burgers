@@ -1,3 +1,9 @@
-import { createOrder, reducer, resetState, state } from './create-order-slice';
+import {
+  createOrder,
+  reducer,
+  resetState,
+  state,
+  initialState
+} from './create-order-slice';
 
-export { createOrder, reducer, resetState, state };
+export { createOrder, reducer, resetState, state, initialState };

@@ -1,3 +1,3 @@
-import { fetchUser, reducer, state } from './user-slice';
+import { fetchUser, reducer, state, initialState } from './user-slice';
 
-export { fetchUser, reducer, state };
+export { fetchUser, reducer, state, initialState };

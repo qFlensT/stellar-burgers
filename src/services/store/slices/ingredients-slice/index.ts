@@ -1,3 +1,8 @@
-import { fetchIngredients, reducer, state } from './ingredients-slice';
+import {
+  fetchIngredients,
+  reducer,
+  state,
+  initialState
+} from './ingredients-slice';
 
-export { fetchIngredients, reducer, state };
+export { fetchIngredients, reducer, state, initialState };

@@ -5,7 +5,7 @@ import { orderBurgerApi } from '@api';
 
 type CreateOrderState = SliceState<'createdOrder', TOrder | null>;
 
-const initialState: CreateOrderState = {
+export const initialState: CreateOrderState = {
   createdOrder: null,
   error: null,
   isInitialized: false,

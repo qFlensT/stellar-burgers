@@ -5,7 +5,8 @@ import {
   reducer,
   removeItem,
   resetState,
-  state
+  state,
+  initialState
 } from './ingredients-constructor-slice';
 
 export {
@@ -15,5 +16,6 @@ export {
   reducer,
   removeItem,
   resetState,
-  state
+  state,
+  initialState
 };

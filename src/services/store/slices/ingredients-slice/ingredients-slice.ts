@@ -5,7 +5,7 @@ import { SliceState } from '../../types';
 
 type IngredientsState = SliceState<'ingredients', TIngredient[]>;
 
-const initialState: IngredientsState = {
+export const initialState: IngredientsState = {
   isLoading: true,
   error: null,
   ingredients: null,

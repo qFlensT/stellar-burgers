@@ -5,7 +5,7 @@ import { SliceState } from '../../types';
 
 type OrdersState = SliceState<'orders', TOrder[]>;
 
-const initialState: OrdersState = {
+export const initialState: OrdersState = {
   isLoading: true,
   error: null,
   orders: null,
