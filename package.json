@@ -86,13 +86,14 @@
     "url-loader": "^4.1.1"
   },
   "scripts": {
-    "start": "webpack serve --mode=development",
+    "start": "webpack serve --mode=development & echo $! > .server_pid",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier ./src --write",
-    "test": "jest",
+    "test:unit": "jest",
+    "test:e2e": "cypress run",
     "cypress:open": "cypress open"
   },
   "eslintConfig": {
