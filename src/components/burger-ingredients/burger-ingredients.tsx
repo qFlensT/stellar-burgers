@@ -12,8 +12,8 @@ export const BurgerIngredients: FC = () => {
 
   /** TODO: взять переменные из стора */
   const buns = ingredients!.filter((i) => i.type === 'bun');
-  const mains = ingredients!.filter((i) => i.type === 'sauce');
-  const sauces = ingredients!.filter((i) => i.type === 'main');
+  const mains = ingredients!.filter((i) => i.type === 'main');
+  const sauces = ingredients!.filter((i) => i.type === 'sauce');
 
   const [currentTab, setCurrentTab] = useState<TTabMode>('bun');
   const titleBunRef = useRef<HTMLHeadingElement>(null);

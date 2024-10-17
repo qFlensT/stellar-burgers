@@ -2,13 +2,14 @@ import { FC, useEffect, useMemo, useState } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient, TOrder } from '@utils-types';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useIngredients } from '../../hooks/use-ingredients';
 import { getOrderByNumberApi } from '@api';
 
 export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
   const { number } = useParams();
+  const location = useLocation();
 
   const [orderState, setOrderState] = useState<{
     order: TOrder | null;
@@ -78,5 +79,10 @@ export const OrderInfo: FC = () => {
     return <>Не удалось найти заказ</>;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return (
+    <OrderInfoUI
+      printOrderNumber={!location.state?.background}
+      orderInfo={orderInfo}
+    />
+  );
 };
