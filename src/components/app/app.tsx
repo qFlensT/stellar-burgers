@@ -18,6 +18,7 @@ import { Provider } from 'react-redux';
 import { store } from '@store';
 import { ProtectedRoute } from '../protected-route';
 import { useCallback } from 'react';
+import { OrderInfoHeading } from '../order-info-heading/order-info-heading';
 
 const App = () => {
   const location = useLocation();
@@ -99,7 +100,7 @@ const App = () => {
           <Routes>
             <Route
               element={
-                <Modal title='Информация по заказу' onClose={handleCloseModal}>
+                <Modal title={<OrderInfoHeading />} onClose={handleCloseModal}>
                   <OrderInfo />
                 </Modal>
               }
@@ -107,10 +108,7 @@ const App = () => {
             />
             <Route
               element={
-                <Modal
-                  title='Информация об ингредиентах'
-                  onClose={handleCloseModal}
-                >
+                <Modal title='Детали ингредиента' onClose={handleCloseModal}>
                   <IngredientDetails />
                 </Modal>
               }
@@ -120,7 +118,7 @@ const App = () => {
               element={
                 <ProtectedRoute protectionType='auth'>
                   <Modal
-                    title='Информация по заказу'
+                    title={<OrderInfoHeading />}
                     onClose={handleCloseModal}
                   >
                     <OrderInfo />

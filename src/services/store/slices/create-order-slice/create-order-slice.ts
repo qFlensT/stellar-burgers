@@ -1,11 +1,11 @@
 import { TOrder } from '@utils-types';
-import { SliceState } from '../types';
+import { SliceState } from '../../types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { orderBurgerApi } from '@api';
 
 type CreateOrderState = SliceState<'createdOrder', TOrder | null>;
 
-const initialState: CreateOrderState = {
+export const initialState: CreateOrderState = {
   createdOrder: null,
   error: null,
   isInitialized: false,
@@ -14,10 +14,10 @@ const initialState: CreateOrderState = {
 
 export const createOrder = createAsyncThunk(
   'createOrder/create',
-  orderBurgerApi
+  (data: string[]) => orderBurgerApi(data)
 );
 
-const feedsSlice = createSlice({
+const createOrderSlice = createSlice({
   name: 'createOrder',
   initialState: initialState,
   selectors: {
@@ -33,10 +33,10 @@ const feedsSlice = createSlice({
       state.isLoading = true;
       state.createdOrder = null;
     });
-    builder.addCase(createOrder.rejected, (state, { payload }) => {
+    builder.addCase(createOrder.rejected, (state, { error }) => {
       if (!state.isInitialized) return;
 
-      state.error = payload;
+      state.error = error;
       state.isLoading = false;
       state.createdOrder = null;
     });
@@ -50,8 +50,8 @@ const feedsSlice = createSlice({
   }
 });
 
-export const { state } = feedsSlice.selectors;
+export const { state } = createOrderSlice.selectors;
 
-export const { resetState } = feedsSlice.actions;
+export const { resetState } = createOrderSlice.actions;
 
-export const { reducer } = feedsSlice;
+export const { reducer } = createOrderSlice;
