@@ -3,7 +3,6 @@ import DOM_SELECTORS from 'cypress/constants/dom-selectors';
 
 const addIngredientAndCheckConstructor = (selector: string) => {
   cy.get(selector).within(() => {
-    cy.get('button').click();
     cy.get('a')
       .children()
       .last()
@@ -11,6 +10,9 @@ const addIngredientAndCheckConstructor = (selector: string) => {
       .invoke('text')
       .then((text) => {
         expect(text.trim()).to.not.be.empty;
+        cy.get('@constructor').should('not.contain.text', text);
+
+        cy.get(selector).find('button').click();
         cy.get('@constructor').should('contain.text', text);
       });
   });
@@ -34,6 +36,14 @@ describe('E2E тестирование конструктора', () => {
     cy.get(DOM_SELECTORS.MAINS_CATEGORY_LIST).find('li').first().as('main');
     cy.get(DOM_SELECTORS.SAUCES_CATEGORY_LIST).find('li').first().as('sauce');
 
+    cy.get('@constructor')
+      .should('contain.text', 'Выберите булки')
+      .should('contain.text', 'Выберите начинку')
+      .children()
+      .last()
+      .find('p')
+      .should('have.text', '0');
+
     addIngredientAndCheckConstructor('@bun');
     addIngredientAndCheckConstructor('@main');
     addIngredientAndCheckConstructor('@sauce');
@@ -43,8 +53,19 @@ describe('E2E тестирование конструктора', () => {
     cy.get(DOM_SELECTORS.BUNS_CATEGORY_LIST).find('li').first().as('bun');
 
     for (let i = 0; i < 2; i++) {
-      cy.get('@bun').click();
-      cy.get(DOM_SELECTORS.MODAL_PANEL).should('be.visible');
+      cy.get('@bun')
+        .click()
+        .find('a')
+        .children()
+        .last()
+        .should('match', 'p')
+        .invoke('text')
+        .then((text) => {
+          cy.get(DOM_SELECTORS.MODAL_PANEL)
+            .find('h3')
+            .last()
+            .should('have.text', text);
+        });
 
       if (!i) cy.get(DOM_SELECTORS.MODAL_CLOSE_BUTTON).click();
       else cy.get(DOM_SELECTORS.MODAL_OVERLAY).click({ force: true });
