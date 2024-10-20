@@ -1,28 +1,24 @@
 import { getFeedsApi } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrdersData } from '@utils-types';
-import { SliceState } from '../types';
+import { SliceState } from '../../types';
 
 type IngredientsState = SliceState<'feeds', TOrdersData>;
 
-const initialState: IngredientsState = {
+export const initialState: IngredientsState = {
   isLoading: true,
   error: null,
   feeds: null,
   isInitialized: false
 };
 
-export const fetchFeeds = createAsyncThunk('feeds/get', getFeedsApi);
+export const fetchFeeds = createAsyncThunk('feeds/get', () => getFeedsApi());
 
 const feedsSlice = createSlice({
   name: 'feeds',
   initialState: initialState,
   selectors: {
-    state: (state) => state,
-    isLoading: (state) => state.isLoading,
-    feeds: (state) => state.feeds,
-    isInitialized: (state) => state.isInitialized,
-    error: (state) => state.error
+    state: (state) => state
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -32,8 +28,8 @@ const feedsSlice = createSlice({
       state.isLoading = true;
       state.feeds = null;
     });
-    builder.addCase(fetchFeeds.rejected, (state, { payload }) => {
-      state.error = payload;
+    builder.addCase(fetchFeeds.rejected, (state, { error }) => {
+      state.error = error;
       state.isLoading = false;
       state.feeds = null;
     });
@@ -48,7 +44,6 @@ const feedsSlice = createSlice({
   }
 });
 
-export const { state, error, feeds, isInitialized, isLoading } =
-  feedsSlice.selectors;
+export const { state } = feedsSlice.selectors;
 
 export const { reducer } = feedsSlice;
